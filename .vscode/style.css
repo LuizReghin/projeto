@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* o * é o seletor universal, e pega todos os elementos da página. Assim, resetamos as margens e os preenchimentos padrões da web. */
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  -DÁ PARA RESUMIR TODOS EM UM ÚNICO BACKGROUND-
+  */
+  /* background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+/* O asterisco significa que vai aplicar para o body todo */
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  margin: auto;
+  width: 360px;
+  height: 712px;
+  padding: 56px 24px 0px;
+}
+/*Assim, como o background, podemos reunir o margin-top, margin-left, margin right, margin botton em um único comando, margin. Lembrando sempre que funciona como um relogio em sentido horário começando de cima */
+
+/*Também é possível alinhar no centro, sem utilizar o display: block, mas sim, mexendo no elemento mãe
+#profile {
+  text-align: center;
+} 
+*/
+
+/* Profile */
+
+#profile {
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+  margin: auto;
+  display: block;
+  margin: auto;
+}
+/* Img é um elemento do tipo in-line, ou seja ela permite que outros elementos fiquem em linha com ela.
+Elementos do tipo block, não permitem, então os outros elementos são jogados para baixo dele 
+VER SITE CSS.TRICKS */
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Switch */
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  --webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+/* links */
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0px;
+}
+
+/* Display: flex, ele vai tentar se ajustar ao tamanho do seu bloco.
+flex-direction: vc escolhe entre line e column, assim ele vai ficar um por cima do outro ou um do lado do outro.
+gap: é o espaçamento entre esses textos. */
+
+ul li a {
+  display: flex;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0, 2s;
+}
+
+/* ul li a:hover { é um pseudo-selector, o que vai acontecer quando vc passar o mouse sobre ele */
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1px solid var(--text-color);
+}
+/* Caniuse.com, para você ver se os browsers aceitam o seu comando.
+webkit-backdrop-filter foi utilizado para funcionar no safari */
+/* Da pra fazer o espaçamento usando o margin, no ul li a, de 16px também 
+o ultimo valor no rgba é a transparência*/
+
+/* Caso transforme o display em block, não se usaria o comando justify-content, se usaria o text-align center 
+align-items: center, quando a sua caixa tem altura, ele alinha pelo centro na vertical
+*/
+
+/* social links */
+
+#social-links {
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+  border-radius: 50%;
+}
+
+/* footer é usado geralmente para rodapés de páginas */
+
+footer {
+  padding: 24px 0px;
+  text-align: center;
+  font-size: 14px;
+}
